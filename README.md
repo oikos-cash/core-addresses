@@ -1,10 +1,18 @@
 # @oikos/core-addresses
 
+[![npm version](https://img.shields.io/npm/v/@oikos/core-addresses.svg)](https://www.npmjs.com/package/@oikos/core-addresses)
+[![npm downloads](https://img.shields.io/npm/dm/@oikos/core-addresses.svg)](https://www.npmjs.com/package/@oikos/core-addresses)
+[![license](https://img.shields.io/npm/l/@oikos/core-addresses.svg)](#license)
+
 Programmatic access to Oikos Protocol contract addresses by chain id or network name.
 
 Deployment data is bundled from a pinned release tag of [`oikos-cash/core`](https://github.com/oikos-cash/core), so installing a fixed version of this package gives you a frozen, offline snapshot of the addresses for that protocol release.
 
+Published on npm: <https://www.npmjs.com/package/@oikos/core-addresses>
+
 ## Install
+
+Requires **Node.js 18+** (uses native `fetch` at build time; the runtime library itself has zero dependencies).
 
 ```sh
 npm install @oikos/core-addresses
@@ -12,6 +20,20 @@ npm install @oikos/core-addresses
 pnpm add @oikos/core-addresses
 # or
 yarn add @oikos/core-addresses
+# or
+bun add @oikos/core-addresses
+```
+
+To pin to a specific protocol release:
+
+```sh
+npm install @oikos/core-addresses@0.1.0
+```
+
+No install needed for one-off CLI lookups:
+
+```sh
+npx @oikos/core-addresses bsc Vault
 ```
 
 ## Programmatic usage
