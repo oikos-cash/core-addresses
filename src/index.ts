@@ -1,6 +1,28 @@
 import deploymentJson from "../data/deployment.json";
 import metaJson from "../data/meta.json";
+import {
+  ABI_FETCHED_AT,
+  ABI_SOURCE_REF,
+  type Abi,
+  type AbiContractStatus,
+  type AbiItem,
+  type AbiSourceMeta,
+  getAbi,
+  getAbiSourceMeta,
+  hasAbi,
+  listAbis,
+} from "./abi.js";
 import { NETWORKS, type NetworkInfo } from "./networks.js";
+
+export {
+  ABI_FETCHED_AT,
+  ABI_SOURCE_REF,
+  getAbi,
+  getAbiSourceMeta,
+  hasAbi,
+  listAbis,
+};
+export type { Abi, AbiContractStatus, AbiItem, AbiSourceMeta };
 
 export type KnownContractName =
   | "Vault"
@@ -98,6 +120,16 @@ export function isSupported(network: number | string): boolean {
   } catch {
     return false;
   }
+}
+
+export function getContract(
+  network: number | string,
+  contract: ContractName,
+): { address: string; abi: Abi } {
+  return {
+    address: getAddress(network, contract),
+    abi: getAbi(contract),
+  };
 }
 
 export function getNetworkInfo(
